@@ -179,6 +179,82 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   .sheet div{grid-template-columns:1fr;gap:2px}
   .contact dl div{grid-template-columns:1fr;gap:2px}
 }
+
+/* ===== Motion & design layer ===== */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes ping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.2);opacity:0}}
+@keyframes flow{0%{left:-6px;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:calc(100% - 2px);opacity:0}}
+@keyframes glow{0%,100%{box-shadow:inset 0 0 0 1px var(--accent),0 0 0 0 color-mix(in srgb,var(--accent) 35%,transparent)}50%{box-shadow:inset 0 0 0 1px var(--accent),0 0 0 6px color-mix(in srgb,var(--accent) 0%,transparent)}}
+
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(var(--rule) 1.1px,transparent 1.2px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 90% at 78% 40%,#000 20%,transparent 75%);
+  mask-image:radial-gradient(ellipse 70% 90% at 78% 40%,#000 20%,transparent 75%);opacity:.9}
+.hero .wrap{position:relative}
+.hero .wrap > div > *{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .wrap > div > h1{animation-delay:.05s}
+.hero .wrap > div > p.lead{animation-delay:.2s}
+.hero .wrap > div > .actions{animation-delay:.32s}
+.live{animation:rise .8s .4s cubic-bezier(.2,.7,.2,1) both}
+.live li{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.live li:nth-child(1){animation-delay:.55s}.live li:nth-child(2){animation-delay:.63s}.live li:nth-child(3){animation-delay:.71s}.live li:nth-child(4){animation-delay:.79s}.live li:nth-child(5){animation-delay:.87s}
+.live h2 i{position:relative}
+.live h2 i::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--live);animation:ping 2.2s ease-out infinite}
+.live li{transition:background .2s;border-radius:6px;margin:0 -8px;padding-left:8px;padding-right:8px}
+.live li:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
+
+.btn{transition:transform .2s,background .2s,border-color .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+
+h2.sec::after{content:"";display:block;width:0;height:3px;background:var(--accent);margin-top:14px;border-radius:2px;transition:width .9s cubic-bezier(.2,.7,.2,1) .1s}
+h2.sec.in::after{width:72px}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.project .media.reveal{transition-delay:.05s}
+.project .text.reveal{transition-delay:.18s}
+.others article.reveal:nth-child(2){transition-delay:.1s}.others article.reveal:nth-child(3){transition-delay:.2s}
+.stack > div.reveal{transition-delay:calc(var(--i,0) * 70ms)}
+
+@media (min-width: 861px){
+  .project .media{position:sticky;top:84px;align-self:start}
+}
+.shot{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.shot:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(0,0,0,.45)}
+.phone{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.duo:hover .phone{transform:translateY(-6px) rotate(-1.5deg)}
+
+/* Architecture strips come alive when in view */
+.arch .node{opacity:.28;transform:translateY(8px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 120ms)}
+.arch.in .node{opacity:1;transform:none}
+.arch .arrow{overflow:visible;opacity:.3;transition:opacity .4s;transition-delay:calc(var(--i,0) * 120ms)}
+.arch.in .arrow{opacity:1}
+.arch .arrow::before{content:"";position:absolute;top:-3px;left:-6px;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:0}
+.arch.in .arrow::before{animation:flow 1.6s cubic-bezier(.4,0,.6,1) infinite;animation-delay:calc(var(--i,0) * 120ms + .6s)}
+.arch.in .node.hot{animation:glow 2.4s ease-in-out infinite;animation-delay:.8s}
+.arch .note{opacity:0;transition:opacity .6s .5s}
+.arch.in .note{opacity:1}
+
+/* Stack as chips */
+.stack ul{display:flex;flex-wrap:wrap;gap:8px}
+.stack li{border:1px solid var(--rule);border-radius:999px;padding:5px 12px;font-size:14px;background:var(--paper-2);transition:border-color .2s,color .2s,transform .2s}
+.stack li:hover{border-color:var(--accent);color:var(--ink);transform:translateY(-1px)}
+
+/* Language crossfade */
+main,footer{transition:opacity .18s ease}
+.switching main,.switching footer{opacity:0}
+
+.role{transition:background .2s}
+.project:hover .role{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+
+@media (prefers-reduced-motion: reduce){
+  .hero .wrap > div > *,.live,.live li{animation:none}
+  .live h2 i::after,.arch.in .arrow::before,.arch.in .node.hot{animation:none}
+  .reveal,.arch .node,.arch .arrow,.arch .note{opacity:1;transform:none;transition:none}
+  h2.sec::after{width:72px;transition:none}
+  .shot,.phone,.btn,.stack li{transition:none}
+}
 </style>
 </head>
 <body>
@@ -216,7 +292,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       </p>
       <div class="actions">
         <a class="btn primary" href="#proyectos"><span class="es">Ver proyectos</span><span class="en">See projects</span></a>
-        <a class="btn" href="https://github.com/Rauuwww" target="_blank" rel="noopener">GitHub · Rauuwww</a>
         <a class="btn" href="mailto:raurudesulml@gmail.com"><span class="es">Escribirme</span><span class="en">Email me</span></a>
       </div>
     </div>
@@ -253,8 +328,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   <div class="wrap">
     <h2 class="sec"><span class="es">Proyectos destacados</span><span class="en">Selected projects</span></h2>
     <p class="sub">
-      <span class="es">Cada ficha indica qué construí, con qué, y la evidencia que se puede revisar en el repositorio: historial de commits, pruebas, documentación y manuales.</span>
-      <span class="en">Each entry says what I built, with what, and the evidence you can check in the repository: commit history, tests, documentation and manuals.</span>
+      <span class="es">Cada ficha dice qué construí, con qué, y la evidencia del trabajo: historial de cambios, pruebas, documentación y manuales entregados.</span>
+      <span class="en">Each entry says what I built, with what, and the evidence behind it: change history, tests, documentation and delivered manuals.</span>
     </p>
 
     <!-- 1. Comer Rodríguez -->
@@ -285,7 +360,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <div><dt>Stack</dt><dd>React 19, Vite, Tailwind, Capacitor (Android/iOS), Leaflet · Node, Express, Prisma, MySQL 8, JWT, Firebase Cloud Messaging, Baileys · Electron · Firebird</dd></div>
           <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">185 commits, junio a septiembre de 2026 · 23 archivos de pruebas Jest + Supertest sobre base de datos de prueba · README del API con tabla de endpoints y Swagger</span><span class="en">185 commits, June to September 2026 · 23 Jest + Supertest test files against a test database · API README with endpoint table and Swagger</span></dd></div>
         </dl>
-        <div class="links"><a href="https://github.com/Rauuwww/logi_comerRodriguez" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </div>
     </article>
 
@@ -326,7 +401,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <div><dt>Stack</dt><dd>Python, YOLO, ByteTrack, Ollama, NVIDIA Jetson · Laravel, MySQL 8, Reverb, colas y scheduler · React 19, Vite · Docker, Railway · Telegram Bot API, WhatsApp</dd></div>
           <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">86 commits en dos semanas de agosto de 2026 · 19 archivos pytest, 21 pruebas PHPUnit contra MySQL real y pruebas de contrato con Vitest · README de más de 700 líneas y esquema SQL</span><span class="en">86 commits in two weeks of August 2026 · 19 pytest files, 21 PHPUnit feature tests against real MySQL and Vitest contract tests · 700+ line README and SQL schema</span></dd></div>
         </dl>
-        <div class="links"><a href="https://github.com/Rauuwww/SIVIM-24" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </div>
     </article>
 
@@ -366,7 +441,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <div><dt>Stack</dt><dd>React 18, Vite, Tailwind, Electron + electron-builder · Node, Express, Sequelize, MySQL, socket.io, node-cron, JWT · Firebird, Cloudinary, whatsapp-web.js, Swagger · servicio de Windows</dd></div>
           <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">71 commits, diciembre de 2025 a agosto de 2026 · guía de despliegue (servicio de Windows y build de Electron) · README de instalación paso a paso</span><span class="en">71 commits, December 2025 to August 2026 · deployment guide (Windows service and Electron build) · step-by-step install README</span></dd></div>
         </dl>
-        <div class="links"><a href="https://github.com/Rauuwww/Max24EvaluacionDesempe-oFB" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </div>
     </article>
 
@@ -406,12 +481,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         </ul>
         <dl class="sheet">
           <div><dt>Stack</dt><dd>Node (ESM), Express 5, node-firebird, MySQL, node-cron, worker_threads, PDFKit, Nodemailer, Anthropic SDK · React 19, Vite, Tailwind 4, Electron · servicio de Windows</dd></div>
-          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">103 commits, febrero a septiembre de 2026 · manual de reportes y colección Postman · repositorio del sistema heredado conservado como referencia</span><span class="en">103 commits, February to September 2026 · report manual and Postman collection · legacy system kept in its own repository for reference</span></dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">103 commits, febrero a septiembre de 2026 · manual de reportes y colección Postman · sistema heredado conservado como referencia</span><span class="en">103 commits, February to September 2026 · report manual and Postman collection · legacy system kept for reference</span></dd></div>
         </dl>
-        <div class="links">
-          <a href="https://github.com/Rauuwww/ReportesAutomaticos" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a>
-          <a href="https://github.com/Rauuwww/ReportesAutomaticosLegado" target="_blank" rel="noopener"><span class="es">Sistema heredado (C#)</span><span class="en">Legacy system (C#)</span></a>
-        </div>
+        
       </div>
     </article>
 
@@ -450,7 +522,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <div><dt>Stack</dt><dd>React 18, TypeScript, Vite, Tailwind, shadcn/ui, Electron · Node, Express 5, TypeScript, Prisma, MySQL, JWT, whatsapp-web.js · pkg, javascript-obfuscator, node-windows · Render</dd></div>
           <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">72 commits, marzo a agosto de 2026 · manuales técnico y de usuario · configuración de Render y respaldo completo de la base</span><span class="en">72 commits, March to August 2026 · technical and user manuals · Render config and full database backup</span></dd></div>
         </dl>
-        <div class="links"><a href="https://github.com/Rauuwww/oftalmolog-aLaser-zq" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </div>
     </article>
 
@@ -488,7 +560,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <div><dt>Stack</dt><dd>C++ (CMake, MSVC), Kotlin (Android API 26+), IddCx, DXGI, Media Foundation, MediaCodec, TCP, adb, SendInput</dd></div>
           <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">Publicado en mayo de 2026 · PROTOCOL.md, DEV_SETUP.md y guía del driver · licencia MIT</span><span class="en">Published May 2026 · PROTOCOL.md, DEV_SETUP.md and driver guide · MIT licence</span></dd></div>
         </dl>
-        <div class="links"><a href="https://github.com/Rauuwww/winand_desktop_android" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </div>
     </article>
 
@@ -516,7 +588,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <div><dt>Stack</dt><dd>Godot 4.3, GDScript, Forward+</dd></div>
           <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">43 scripts, unas 4 700 líneas, en dos días de septiembre de 2026 · 38 pruebas headless con runner propio · documento de diseño y README con las mecánicas</span><span class="en">43 scripts, about 4,700 lines, in two days of September 2026 · 38 headless tests with a custom runner · design document and README covering the mechanics</span></dd></div>
         </dl>
-        <div class="links"><a href="https://github.com/Rauuwww/gears-proto" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </div>
     </article>
 
@@ -553,10 +625,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
           <div><dt>Stack</dt><dd>React 18, Vite, Tailwind, Flowbite, framer-motion · Node, Express, Resend</dd></div>
           <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">43 commits, diciembre de 2024 a agosto de 2026, con un segundo colaborador · documentación del API</span><span class="en">43 commits, December 2024 to August 2026, with a second contributor · API documentation</span></dd></div>
         </dl>
-        <div class="links">
-          <a href="https://intectisolutions.com.mx" target="_blank" rel="noopener"><span class="es">Sitio en vivo</span><span class="en">Live site</span></a>
-          <a href="https://github.com/Rauuwww/INTEC_WEB" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a>
-        </div>
+        <div class="links"><a href="https://intectisolutions.com.mx" target="_blank" rel="noopener"><span class="es">Sitio en vivo</span><span class="en">Live site</span></a></div>
       </div>
     </article>
   </div>
@@ -570,17 +639,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <article>
         <h3>JASE WMS</h3>
         <p><span class="es">Maqueta funcional de un sistema de almacén e importación para Grupo Comercial JASE: 15 pantallas (pedimentos, kardex, recepciones, traspasos, conversión, producción) con datos simulados y un tour guiado interactivo propio. React 19, Tailwind 4.</span><span class="en">Working mock-up of a warehouse and import system for Grupo Comercial JASE: 15 screens (customs entries, kardex, receipts, transfers, conversion, production) on mock data with a custom interactive guided tour. React 19, Tailwind 4.</span></p>
-        <div class="links"><a href="https://github.com/Rauuwww/ProyectoJASE" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </article>
       <article>
         <h3><span class="es">Asistencia por QR</span><span class="en">QR Attendance</span></h3>
         <p><span class="es">Control de asistencia a eventos: genera códigos QR personalizados en lote (ZIP con SVG y PNG), los valida con la cámara y administra eventos y asistentes con importación CSV. React 19, Express 5, MySQL.</span><span class="en">Event attendance: generates custom QR codes in bulk (ZIP with SVG and PNG), validates them with the camera and manages events and attendees with CSV import. React 19, Express 5, MySQL.</span></p>
-        <div class="links"><a href="https://github.com/Rauuwww/QR_Asistencias" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </article>
       <article>
         <h3><span class="es">Reportes heredados (C#)</span><span class="en">Legacy reports (C#)</span></h3>
         <p><span class="es">El sistema de escritorio anterior de reportes financieros sobre Microsip: WinForms, 30 reportes RDLC con DataSets tipados y envío SMTP. Lo mantuve y después lo reemplacé con Reportes Automáticos.</span><span class="en">The previous desktop system for financial reports over Microsip: WinForms, 30 RDLC reports with typed DataSets and SMTP delivery. I maintained it and later replaced it with Automated Reports.</span></p>
-        <div class="links"><a href="https://github.com/Rauuwww/ReportesAutomaticosLegado" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+        
       </article>
     </div>
   </div>
@@ -589,7 +658,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <section id="stack">
   <div class="wrap">
     <h2 class="sec">Stack</h2>
-    <p class="sub"><span class="es">Solo lo que aparece en los repositorios de arriba.</span><span class="en">Only what appears in the repositories above.</span></p>
+    <p class="sub"><span class="es">Solo lo que uso en los proyectos de arriba.</span><span class="en">Only what I use in the projects above.</span></p>
     <div class="stack">
       <div>
         <h3>Frontend</h3>
@@ -654,16 +723,37 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <script>
 (function(){
   var root=document.documentElement;
-  function setLang(l){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function apply(l){
     root.setAttribute('data-lang',l);root.setAttribute('lang',l);
     document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-set-lang')===l));});
     document.title=l==='en'?'Raúl R. Yllescas · Portfolio':'Raúl R. Yllescas · Portafolio';
     try{localStorage.setItem('lang',l);}catch(e){}
   }
+  function setLang(l,animate){
+    if(!animate||reduce){apply(l);return;}
+    document.body.classList.add('switching');
+    setTimeout(function(){apply(l);document.body.classList.remove('switching');},180);
+  }
   var saved=null;try{saved=localStorage.getItem('lang');}catch(e){}
   var q=new URLSearchParams(location.search).get('lang');
-  setLang(q==='en'||q==='es'?q:(saved==='en'||saved==='es'?saved:'es'));
-  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-set-lang'));});});
+  setLang(q==='en'||q==='es'?q:(saved==='en'||saved==='es'?saved:'es'),false);
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){if(root.getAttribute('data-lang')!==b.getAttribute('data-set-lang'))setLang(b.getAttribute('data-set-lang'),true);});});
+
+  /* Stagger indexes for architecture strips and stack columns */
+  document.querySelectorAll('.arch').forEach(function(a){
+    var i=0;a.querySelectorAll('.node,.arrow').forEach(function(el){el.style.setProperty('--i',i);if(el.classList.contains('node'))i++;});
+  });
+  document.querySelectorAll('.stack > div').forEach(function(el,i){el.style.setProperty('--i',i);});
+
+  /* Reveal on scroll */
+  var targets=Array.prototype.slice.call(document.querySelectorAll('h2.sec, .project .media, .project .text, .others article, .stack > div, .contact .big, .contact dl, .arch'));
+  targets.forEach(function(el){if(!el.classList.contains('arch'))el.classList.add('reveal');});
+  if(reduce||!('IntersectionObserver' in window)){targets.forEach(function(el){el.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -12% 0px',threshold:.12});
+  targets.forEach(function(el){io.observe(el);});
 })();
 </script>
 </body>
