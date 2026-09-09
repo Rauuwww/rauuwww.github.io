@@ -1,21 +1,670 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Pages Prueba</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raúl R. Yllescas · Portafolio</title>
+<meta name="description" content="Portafolio de Raúl R. Yllescas, desarrollador full stack: sistemas de logística, RRHH, videovigilancia con IA, reportes automáticos y más, en producción para empresas de Puebla, México.">
+<meta property="og:title" content="Raúl R. Yllescas · Desarrollador full stack">
+<meta property="og:description" content="Sistemas en producción para logística, retail, salud y videovigilancia con IA. Web, móvil, escritorio y backend.">
+<meta property="og:url" content="https://rauuwww.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23147a5c'/%3E%3Ctext x='16' y='21' font-family='sans-serif' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3ERY%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3f5f1;
+  --paper-2:#e9ece6;
+  --ink:#171a1d;
+  --ink-2:#4d545b;
+  --rule:#cfd4cb;
+  --accent:#147a5c;
+  --accent-ink:#0f5f47;
+  --live:#20a96f;
+  --frame:#1f242a;
+  --max:1120px;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111416;--paper-2:#191d20;--ink:#e8ebe6;--ink-2:#a3aaa4;--rule:#2c3236;
+    --accent:#4fcb9a;--accent-ink:#7fdcb6;--live:#3ed08a;--frame:#0a0c0e;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Bricolage Grotesque",ui-sans-serif,system-ui,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;line-height:1.55;font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,48px);min-width:0}
+main,section,.project,.media,.text{min-width:0}
+
+/* Language switching */
+[data-lang="es"] .en{display:none !important}
+[data-lang="en"] .es{display:none !important}
+
+/* Header */
+header.top{
+  position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);
+}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font-weight:700;text-decoration:none;letter-spacing:-.01em}
+nav.main{display:flex;gap:22px;font-size:15px}
+nav.main a{text-decoration:none;color:var(--ink-2)}
+nav.main a:hover{color:var(--ink)}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:2px;font-size:13px;font-weight:600}
+.lang button{border:0;background:transparent;color:var(--ink-2);padding:4px 10px;border-radius:999px;cursor:pointer;font:inherit}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* Hero */
+.hero{padding:clamp(56px,9vw,120px) 0 clamp(40px,6vw,72px);border-bottom:1px solid var(--rule)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.9fr);gap:clamp(32px,6vw,88px);align-items:end}
+.hero h1{
+  font-size:clamp(44px,7.2vw,88px);line-height:.98;letter-spacing:-.035em;font-weight:700;margin:0 0 20px;
+  font-variation-settings:"opsz" 96;
+}
+.hero h1 small{display:block;font-size:.34em;font-weight:500;letter-spacing:-.01em;color:var(--ink-2);margin-top:14px;line-height:1.25}
+.hero p.lead{font-size:clamp(18px,2vw,21px);max-width:34em;margin:0 0 28px;color:var(--ink)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;
+  padding:11px 18px;border-radius:8px;border:1px solid var(--ink);color:var(--ink);background:transparent;
+}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.live{border:1px solid var(--rule);border-radius:12px;padding:18px 20px 8px;background:var(--paper-2)}
+.live h2{font-size:14px;font-weight:600;margin:0 0 10px;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+.live h2 i{width:9px;height:9px;border-radius:50%;background:var(--live);box-shadow:0 0 0 4px color-mix(in srgb,var(--live) 22%,transparent)}
+.live ul{list-style:none;margin:0;padding:0}
+.live li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-top:1px solid var(--rule);font-size:15px;line-height:1.35}
+.live li b{font-weight:600;display:block}
+.live li span{color:var(--ink-2);font-size:13.5px}
+.live li em{font-style:normal;color:var(--ink-2);font-size:13px;white-space:nowrap;padding-top:2px}
+
+/* Sections */
+section{padding:clamp(48px,7vw,96px) 0;border-bottom:1px solid var(--rule)}
+section h2.sec{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.025em;line-height:1.1;margin:0 0 10px;font-weight:700}
+section p.sub{margin:0 0 clamp(28px,4vw,48px);color:var(--ink-2);max-width:40em}
+
+/* Project rows */
+.project{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);padding:clamp(36px,5vw,64px) 0;border-top:1px solid var(--rule)}
+.project:first-of-type{border-top:0;padding-top:0}
+.project .media{min-width:0}
+.project .text{min-width:0}
+.project h3{font-size:clamp(24px,2.6vw,31px);letter-spacing:-.02em;line-height:1.12;margin:0 0 6px;font-weight:700}
+.project .client{color:var(--ink-2);font-size:15px;margin:0 0 16px}
+.project .client b{color:var(--ink);font-weight:600}
+.project p{margin:0 0 14px}
+.project ul.did{margin:0 0 18px;padding-left:1.15em}
+.project ul.did li{margin:0 0 6px}
+.project ul.did li::marker{color:var(--accent)}
+.role{display:inline-block;font-size:13px;font-weight:600;color:var(--accent-ink);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:6px;padding:2px 8px;margin:0 0 12px}
+
+.sheet{border-top:2px solid var(--ink);margin-top:6px;font-size:14.5px}
+.sheet div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.sheet dt{color:var(--ink-2);margin:0}
+.sheet dd{margin:0}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:15px;font-weight:600}
+.links a{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 50%,transparent)}
+.links a:hover{border-bottom-color:var(--accent-ink)}
+.links span{color:var(--ink-2);font-weight:500}
+
+/* Media frames */
+.shot{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:var(--paper-2)}
+.shot.browser{padding-top:26px;position:relative}
+.shot.browser::before{content:"";position:absolute;left:12px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--rule);box-shadow:14px 0 0 var(--rule),28px 0 0 var(--rule)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) clamp(84px,21%,128px);gap:14px;align-items:end}
+.phone{width:100%;border:4px solid var(--frame);border-radius:18px;overflow:hidden;background:#000}
+.caption{font-size:13px;color:var(--ink-2);margin-top:8px}
+
+/* Architecture strips */
+.arch{border:1px solid var(--rule);border-radius:10px;padding:18px;background:var(--paper-2);display:flex;flex-direction:column;gap:10px}
+.arch .row{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.node{
+  flex:1 1 0;min-width:110px;border:1px solid var(--rule);background:var(--paper);border-radius:8px;padding:10px 12px;
+  font-size:13.5px;line-height:1.3;position:relative;
+}
+.node b{display:block;font-weight:600;margin-bottom:2px}
+.node span{color:var(--ink-2);font-size:12.5px}
+.node.hot{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.arrow{align-self:center;width:26px;flex:0 0 26px;height:1px;background:var(--ink-2);position:relative}
+.arrow::after{content:"";position:absolute;right:-1px;top:-3.5px;border:4px solid transparent;border-left:6px solid var(--ink-2)}
+.arch .note{font-size:13px;color:var(--ink-2);margin:2px 0 0}
+.arch .side{display:flex;gap:8px;flex-wrap:wrap}
+.arch .side .node{flex:1 1 100px}
+
+/* Others */
+.others{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 40px}
+.others article{padding:20px 0;border-top:1px solid var(--rule)}
+.others h3{font-size:19px;margin:0 0 4px;letter-spacing:-.01em}
+.others p{margin:0 0 8px;color:var(--ink-2);font-size:15px}
+.others .links{margin-top:6px;font-size:14px}
+
+/* Stack */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 40px}
+.stack h3{font-size:15px;margin:0 0 8px;padding-bottom:6px;border-bottom:2px solid var(--ink);font-weight:700}
+.stack ul{list-style:none;margin:0;padding:0;font-size:15px;color:var(--ink-2)}
+.stack li{padding:4px 0;border-bottom:1px solid var(--rule)}
+.stack li b{color:var(--ink);font-weight:600}
+
+/* Contact */
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.contact .big{font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;line-height:1.2;margin:0}
+.contact dl{margin:0;font-size:16px}
+.contact dl div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.contact dt{color:var(--ink-2)}
+.contact dd{margin:0}
+.contact a{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 50%,transparent)}
+footer{padding:28px 0 40px;font-size:13.5px;color:var(--ink-2)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media (max-width: 860px){
+  .hero .wrap,.project,.contact .wrap{grid-template-columns:1fr}
+  .project .media{order:-1}
+  nav.main{display:none}
+}
+@media (max-width: 520px){
+  body{font-size:16px}
+  .sheet div{grid-template-columns:1fr;gap:2px}
+  .contact dl div{grid-template-columns:1fr;gap:2px}
+}
+</style>
 </head>
 <body>
 
-    <h1>Esta es una prueba para GitHub Pages</h1>
-    
-    <p>Creado para ver cómo funciona el sitio</p>
-    
-    <p>
-        <a href="https://imgur.com/8yYQOox">
-            <img src="https://i.imgur.com/8yYQOox.jpg" title="CyberPunk Edgeruners" width="100%" />
-        </a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Raúl R. Yllescas</a>
+    <nav class="main" aria-label="Secciones">
+      <a href="#proyectos"><span class="es">Proyectos</span><span class="en">Projects</span></a>
+      <a href="#stack">Stack</a>
+      <a href="#contacto"><span class="es">Contacto</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>
+        Raúl R. Yllescas
+        <small>
+          <span class="es">Desarrollador full stack · Ingeniero en Sistemas Computacionales · San Martín Texmelucan, Puebla</span>
+          <span class="en">Full-stack developer · Computer Systems Engineer · San Martín Texmelucan, Puebla, Mexico</span>
+        </small>
+      </h1>
+      <p class="lead">
+        <span class="es">Construyo sistemas que las empresas usan todos los días: logística con app móvil para choferes, evaluación de personal para una cadena de tiendas, videovigilancia con IA, reportes que se envían solos. Web, móvil, escritorio y backend, desde los requerimientos hasta la instalación en el servidor del cliente.</span>
+        <span class="en">I build systems businesses run on every day: logistics with a driver mobile app, staff evaluation for a retail chain, AI video surveillance, reports that send themselves. Web, mobile, desktop and backend, from requirements to installation on the client's server.</span>
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#proyectos"><span class="es">Ver proyectos</span><span class="en">See projects</span></a>
+        <a class="btn" href="https://github.com/Rauuwww" target="_blank" rel="noopener">GitHub · Rauuwww</a>
+        <a class="btn" href="mailto:raurudesulml@gmail.com"><span class="es">Escribirme</span><span class="en">Email me</span></a>
+      </div>
+    </div>
+
+    <aside class="live" aria-label="Sistemas en operación">
+      <h2><i aria-hidden="true"></i><span class="es">En operación hoy</span><span class="en">Running today</span></h2>
+      <ul>
+        <li>
+          <div><b>Comer Rodríguez Logística</b><span class="es">Pedidos, rutas y choferes. Web + Android/iOS + WhatsApp</span><span class="en">Orders, routes and drivers. Web + Android/iOS + WhatsApp</span></div>
+          <em class="es">servidor del cliente</em><em class="en">client's server</em>
+        </li>
+        <li>
+          <div><b>Max24 Evaluación 360</b><span class="es">RRHH de una cadena de tiendas de conveniencia</span><span class="en">HR for a convenience-store chain</span></div>
+          <em class="es">red interna + escritorio</em><em class="en">LAN + desktop app</em>
+        </li>
+        <li>
+          <div><b>Reportes Automáticos</b><span class="es">PDFs de ventas e inventario por correo, multi-tienda</span><span class="en">Sales and inventory PDFs by email, multi-store</span></div>
+          <em class="es">servicio de Windows</em><em class="en">Windows service</em>
+        </li>
+        <li>
+          <div><b>OftAgenda</b><span class="es">Citas de una clínica oftalmológica con avisos por WhatsApp</span><span class="en">Eye-clinic appointments with WhatsApp reminders</span></div>
+          <em class="es">escritorio + Render</em><em class="en">desktop + Render</em>
+        </li>
+        <li>
+          <div><b>intectisolutions.com.mx</b><span class="es">Sitio corporativo con CMS propio</span><span class="en">Company site with its own CMS</span></div>
+          <em class="es">producción</em><em class="en">production</em>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="wrap">
+    <h2 class="sec"><span class="es">Proyectos destacados</span><span class="en">Selected projects</span></h2>
+    <p class="sub">
+      <span class="es">Cada ficha indica qué construí, con qué, y la evidencia que se puede revisar en el repositorio: historial de commits, pruebas, documentación y manuales.</span>
+      <span class="en">Each entry says what I built, with what, and the evidence you can check in the repository: commit history, tests, documentation and manuals.</span>
     </p>
 
+    <!-- 1. Comer Rodríguez -->
+    <article class="project" id="comer">
+      <div class="media">
+        <div class="duo">
+          <div class="shot browser"><img src="assets/img/comer-rutas.webp" alt="Panel de rutas del sistema de logística: choferes con porcentaje de entregas del día" width="1400" height="875" loading="lazy"></div>
+          <div class="phone"><img src="assets/img/comer-movil.webp" alt="App móvil del chofer con el detalle de su ruta sobre un mapa" width="375" height="812" loading="lazy"></div>
+        </div>
+        <p class="caption"><span class="es">Panel del administrador (web) y detalle de ruta en la app del chofer (Android/iOS). Datos de demostración.</span><span class="en">Admin panel (web) and route detail in the driver app (Android/iOS). Demo data.</span></p>
+      </div>
+      <div class="text">
+        <h3>Comer Rodríguez Logística</h3>
+        <p class="client"><span class="es"><b>Comercializadora Rodríguez</b> · sistema de entregas para una distribuidora con varias sucursales</span><span class="en"><b>Comercializadora Rodríguez</b> · delivery management for a multi-branch distributor</span></p>
+        <p class="es">Del pedido a la entrega: ventas captura, almacén surte, el supervisor asigna chofer y ruta, el chofer entrega con evidencia fotográfica desde el teléfono y el cliente rastrea su pedido con un QR sin iniciar sesión. Siete roles, varias empresas y sucursales en la misma instalación.</p>
+        <p class="en">Order to doorstep: sales captures, warehouse fulfils, a supervisor assigns driver and route, the driver delivers with photo evidence from the phone, and the customer tracks the order via QR without logging in. Seven roles, several companies and branches in one installation.</p>
+        <ul class="did">
+          <li class="es">Flujo de estatus completo (pendiente, asignado, en ruta, entregado o no entregado) con reasignación, geocercas y control de flota.</li>
+          <li class="en">Full status flow (pending, assigned, en route, delivered or failed) with reassignment, geofences and fleet control.</li>
+          <li class="es">Avisos automáticos por WhatsApp al cliente ("va en camino", "entregado" con foto) en un microservicio aparte; la línea se vincula por QR desde el panel.</li>
+          <li class="en">Automatic WhatsApp notices to the customer ("on its way", "delivered" with photo) in a separate microservice; the line is linked by QR from the panel.</li>
+          <li class="es">Sincronización con el ERP Microsip (Firebird) por una interfaz desacoplada, notificaciones push con Firebase y build automatizado del APK.</li>
+          <li class="en">Sync with the Microsip ERP (Firebird) through a decoupled interface, Firebase push notifications and automated APK release build.</li>
+          <li class="es">Instalado en el servidor del cliente con HTTPS (Caddy) y DNS dinámico; incluye guía de despliegue y generador de presentación comercial con capturas automáticas.</li>
+          <li class="en">Installed on the client's own server with HTTPS (Caddy) and dynamic DNS; includes a deployment guide and a sales-deck generator that screenshots every role automatically.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>React 19, Vite, Tailwind, Capacitor (Android/iOS), Leaflet · Node, Express, Prisma, MySQL 8, JWT, Firebase Cloud Messaging, Baileys · Electron · Firebird</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">185 commits, junio a septiembre de 2026 · 23 archivos de pruebas Jest + Supertest sobre base de datos de prueba · README del API con tabla de endpoints y Swagger</span><span class="en">185 commits, June to September 2026 · 23 Jest + Supertest test files against a test database · API README with endpoint table and Swagger</span></dd></div>
+        </dl>
+        <div class="links"><a href="https://github.com/Rauuwww/logi_comerRodriguez" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </div>
+    </article>
+
+    <!-- 2. SIVIM-24 -->
+    <article class="project" id="sivim">
+      <div class="media">
+        <div class="arch" aria-label="Arquitectura de SIVIM-24">
+          <div class="row">
+            <div class="node"><b><span class="es">Cámaras RTSP</span><span class="en">RTSP cameras</span></b><span class="es">por sucursal</span><span class="en">per store</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node hot"><b>Jetson Orin Nano</b><span>Python · YOLO · ByteTrack · pose · Ollama</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b>API Laravel</b><span>MySQL · colas · Reverb WebSockets · Railway</span></div>
+          </div>
+          <div class="side">
+            <div class="node"><b><span class="es">Panel React</span><span class="en">React panel</span></b><span class="es">alertas en tiempo real</span><span class="en">real-time alerts</span></div>
+            <div class="node"><b>Telegram</b><span class="es">al personal de la tienda</span><span class="en">to store staff</span></div>
+            <div class="node"><b>WhatsApp → C2</b><span class="es">autoridad, con veto de 90 s</span><span class="en">authority, 90 s veto window</span></div>
+          </div>
+          <p class="note"><span class="es">Detecta asalto, robo hormiga, artículo no cobrado y robo entre pasillos. Si nadie veta la alerta en 90 segundos, se avisa al C2.</span><span class="en">Detects robbery, shoplifting, unpaid items and aisle theft. If nobody vetoes the alert within 90 seconds, the C2 is notified.</span></p>
+        </div>
+      </div>
+      <div class="text">
+        <span class="role"><span class="es">Líder técnico y arquitectura · equipo de 2</span><span class="en">Tech lead and architecture · team of 2</span></span>
+        <h3>SIVIM-24 · <span class="es">videovigilancia con IA</span><span class="en">AI video surveillance</span></h3>
+        <p class="client"><span class="es"><b>Máx 24</b>, cadena de tiendas de conveniencia · desarrollado con Nailea García Tencos</span><span class="en"><b>Máx 24</b>, convenience-store chain · built with Nailea García Tencos</span></p>
+        <p class="es">Un equipo Jetson en cada tienda analiza las cámaras en tiempo real, sigue a cada persona con ByteTrack para reducir falsos positivos y manda la alerta con evidencia al backend, que la reparte al panel, al personal y a la autoridad local. Definí la arquitectura en tres piezas desplegables por separado y la estrategia de pruebas.</p>
+        <p class="en">A Jetson box in every store analyses the cameras in real time, tracks each person with ByteTrack to cut false positives and posts the alert with evidence to the backend, which routes it to the panel, the staff and the local authority. I defined the three independently deployable pieces and the test strategy.</p>
+        <ul class="did">
+          <li class="es">Pipeline de visión con zonas configurables por cámara y carga condicional del modelo de pose (solo en cámaras de caja) para ahorrar cómputo en el Jetson.</li>
+          <li class="en">Vision pipeline with per-camera zones and conditional loading of the pose model (checkout cameras only) to save compute on the Jetson.</li>
+          <li class="es">Validación defensiva de configuración: rechaza cámaras duplicadas y corrige contraseñas RTSP con caracteres especiales. Watchdog y health-check por sucursal.</li>
+          <li class="en">Defensive config validation: rejects duplicate camera sources and fixes RTSP passwords with special characters. Watchdog and health-check per store.</li>
+          <li class="es">Comando para simular un Jetson por HTTP y probar todo el flujo sin hardware; herramientas de campo para descubrir rutas RTSP y grabar clips.</li>
+          <li class="en">A command that simulates a Jetson over HTTP to test the whole flow without hardware; field tools to discover RTSP paths and record clips.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>Python, YOLO, ByteTrack, Ollama, NVIDIA Jetson · Laravel, MySQL 8, Reverb, colas y scheduler · React 19, Vite · Docker, Railway · Telegram Bot API, WhatsApp</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">86 commits en dos semanas de agosto de 2026 · 19 archivos pytest, 21 pruebas PHPUnit contra MySQL real y pruebas de contrato con Vitest · README de más de 700 líneas y esquema SQL</span><span class="en">86 commits in two weeks of August 2026 · 19 pytest files, 21 PHPUnit feature tests against real MySQL and Vitest contract tests · 700+ line README and SQL schema</span></dd></div>
+        </dl>
+        <div class="links"><a href="https://github.com/Rauuwww/SIVIM-24" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </div>
+    </article>
+
+    <!-- 3. Max24 Evaluación 360 -->
+    <article class="project" id="max24">
+      <div class="media">
+        <div class="arch" aria-label="Arquitectura de Max24 Evaluación 360">
+          <div class="row">
+            <div class="node"><b><span class="es">Tiendas</span><span class="en">Stores</span></b><span class="es">gerentes y personal, por turno</span><span class="en">managers and staff, per shift</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node hot"><b>API Node + Express</b><span>Sequelize · MySQL · socket.io · cron · Swagger</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b>ERP Firebird</b><span class="es">datos de personal y ventas</span><span class="en">staff and sales data</span></div>
+          </div>
+          <div class="side">
+            <div class="node"><b><span class="es">Web React</span><span class="en">React web</span></b><span class="es">evaluaciones, incidencias, bonos</span><span class="en">reviews, incidents, bonuses</span></div>
+            <div class="node"><b><span class="es">App de escritorio</span><span class="en">Desktop app</span></b><span class="es">Electron, instalador .exe</span><span class="en">Electron, .exe installer</span></div>
+            <div class="node"><b>WhatsApp</b><span class="es">avisos de incidencias</span><span class="en">incident notices</span></div>
+          </div>
+          <p class="note"><span class="es">Corre como servicio de Windows en el servidor de la empresa; el instalador de escritorio apunta a él automáticamente.</span><span class="en">Runs as a Windows service on the company server; the desktop installer points at it automatically.</span></p>
+        </div>
+      </div>
+      <div class="text">
+        <h3>Max24 Evaluación 360</h3>
+        <p class="client"><span class="es"><b>Máx 24</b> · evaluación de desempeño, incidencias y bonos para el personal de las tiendas</span><span class="en"><b>Máx 24</b> · performance reviews, incidents and bonuses for store staff</span></p>
+        <p class="es">Plataforma de recursos humanos: evaluaciones 360° que se generan solas según la frecuencia configurada, incidencias notificadas al momento, cálculo de bonos por puesto, planes de desarrollo, asistencia y registro de pérdidas por turno. Evolucionó de un prototipo interno a un producto con marca configurable.</p>
+        <p class="en">HR platform: 360° reviews generated automatically at a configurable frequency, incidents reported instantly, bonus calculation per role, development plans, attendance and per-shift loss records. It grew from an internal prototype into a white-label product.</p>
+        <ul class="did">
+          <li class="es">Tareas programadas (diaria, semanal, quincenal, mensual) con node-cron y un daemon que abre los ciclos de evaluación.</li>
+          <li class="en">Scheduled jobs (daily, weekly, fortnightly, monthly) with node-cron and a daemon that opens review cycles.</li>
+          <li class="es">Notificaciones en tiempo real por WebSockets y avisos por WhatsApp; motor de bonos con métricas por puesto.</li>
+          <li class="en">Real-time notifications over WebSockets plus WhatsApp notices; bonus engine with per-role metrics.</li>
+          <li class="es">Marca blanca: nombre, colores y logos se cambian en un solo archivo de configuración. API documentada con Swagger en unos 31 módulos de rutas.</li>
+          <li class="en">White-label: name, colours and logos change in a single config file. Swagger-documented API across about 31 route modules.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>React 18, Vite, Tailwind, Electron + electron-builder · Node, Express, Sequelize, MySQL, socket.io, node-cron, JWT · Firebird, Cloudinary, whatsapp-web.js, Swagger · servicio de Windows</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">71 commits, diciembre de 2025 a agosto de 2026 · guía de despliegue (servicio de Windows y build de Electron) · README de instalación paso a paso</span><span class="en">71 commits, December 2025 to August 2026 · deployment guide (Windows service and Electron build) · step-by-step install README</span></dd></div>
+        </dl>
+        <div class="links"><a href="https://github.com/Rauuwww/Max24EvaluacionDesempe-oFB" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </div>
+    </article>
+
+    <!-- 4. Reportes Automáticos -->
+    <article class="project" id="reportes">
+      <div class="media">
+        <div class="arch" aria-label="Arquitectura de Reportes Automáticos">
+          <div class="row">
+            <div class="node"><b><span class="es">Tabla de tareas</span><span class="en">Task table</span></b><span class="es">reporte, día, hora, destinatarios</span><span class="en">report, day, time, recipients</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node hot"><b><span class="es">Planificador</span><span class="en">Scheduler</span></b><span>node-cron · worker threads · <span class="es">cola con prioridad</span><span class="en">priority queue</span></span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b>PDF</b><span class="es">PDFKit, 11 tipos de reporte</span><span class="en">PDFKit, 11 report types</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b><span class="es">Correo</span><span class="en">Email</span></b><span class="es">SMTP leído de la BD</span><span class="en">SMTP read from the DB</span></div>
+          </div>
+          <div class="side">
+            <div class="node"><b>Firebird · Microsip / IntecPos</b><span class="es">una conexión por tienda, resuelta por middleware</span><span class="en">one connection per store, resolved by middleware</span></div>
+            <div class="node"><b><span class="es">App de escritorio</span><span class="en">Desktop app</span></b><span class="es">React + Electron para configurar tareas</span><span class="en">React + Electron to configure tasks</span></div>
+          </div>
+          <p class="note"><span class="es">Sustituye un sistema heredado en C# WinForms con reportes RDLC que yo mismo mantenía.</span><span class="en">Replaces a legacy C# WinForms system with RDLC reports that I used to maintain.</span></p>
+        </div>
+      </div>
+      <div class="text">
+        <span class="role"><span class="es">Desarrollador principal · equipo de 5</span><span class="en">Lead developer · team of 5</span></span>
+        <h3><span class="es">Reportes Automáticos</span><span class="en">Automated Reports</span></h3>
+        <p class="client"><span class="es"><b>Máx 24</b> y farmacias con punto de venta Microsip · ventas, cortes de caja, inventarios, márgenes y balance</span><span class="en"><b>Máx 24</b> and pharmacies on the Microsip POS · sales, cash counts, inventories, margins and balance</span></p>
+        <p class="es">Cada tienda recibe por correo, a la hora que pide, los PDF que antes alguien generaba a mano. El planificador lee las tareas de la base de datos, arma el reporte diez minutos antes de la hora de entrega y lo envía. Es la migración del sistema heredado de la empresa (C#, WinForms, RDLC) a Node, React y Electron.</p>
+        <p class="en">Every store gets by email, at the time it asks for, the PDFs someone used to produce by hand. The scheduler reads the tasks from the database, builds the report ten minutes before delivery and sends it. It is the migration of the company's legacy system (C#, WinForms, RDLC) to Node, React and Electron.</p>
+        <ul class="did">
+          <li class="es">Pool de worker threads dimensionado según CPU, cola con prioridad por tienda, timeout de 10 minutos y reintentos ante fallos transitorios de la base.</li>
+          <li class="en">CPU-aware worker-thread pool, per-store priority queue, 10-minute timeout and retries on transient database failures.</li>
+          <li class="es">Enrutamiento multi-tienda: un middleware inyecta la conexión Firebird correcta en cada petición; los modelos nunca usan un singleton.</li>
+          <li class="en">Multi-store routing: middleware injects the right Firebird connection into each request; models never use a singleton.</li>
+          <li class="es">Control de acceso por subred con CIDR, limpieza automática de reportes viejos y endpoint de generación manual documentado con colección de Postman.</li>
+          <li class="en">Subnet access control with CIDR, automatic cleanup of old reports and a manual-generation endpoint documented with a Postman collection.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>Node (ESM), Express 5, node-firebird, MySQL, node-cron, worker_threads, PDFKit, Nodemailer, Anthropic SDK · React 19, Vite, Tailwind 4, Electron · servicio de Windows</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">103 commits, febrero a septiembre de 2026 · manual de reportes y colección Postman · repositorio del sistema heredado conservado como referencia</span><span class="en">103 commits, February to September 2026 · report manual and Postman collection · legacy system kept in its own repository for reference</span></dd></div>
+        </dl>
+        <div class="links">
+          <a href="https://github.com/Rauuwww/ReportesAutomaticos" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a>
+          <a href="https://github.com/Rauuwww/ReportesAutomaticosLegado" target="_blank" rel="noopener"><span class="es">Sistema heredado (C#)</span><span class="en">Legacy system (C#)</span></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. OftAgenda -->
+    <article class="project" id="oftagenda">
+      <div class="media">
+        <div class="arch" aria-label="Arquitectura de OftAgenda">
+          <div class="row">
+            <div class="node"><b><span class="es">Recepción</span><span class="en">Front desk</span></b><span class="es">agenda, pacientes, permisos</span><span class="en">schedule, patients, permissions</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node hot"><b>API Express + TypeScript</b><span>Prisma · MySQL · JWT · <span class="es">roles por bandera</span><span class="en">flag-based roles</span></span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b>Bot WhatsApp</b><span class="es">recordatorios de cita al paciente</span><span class="en">appointment reminders to patients</span></div>
+          </div>
+          <div class="side">
+            <div class="node"><b><span class="es">App de escritorio</span><span class="en">Desktop app</span></b><span>React + TypeScript + shadcn/ui · Electron</span></div>
+            <div class="node"><b><span class="es">Entrega al cliente</span><span class="en">Client hand-off</span></b><span class="es">backend como .exe ofuscado y servicio de Windows</span><span class="en">backend as an obfuscated .exe Windows service</span></div>
+          </div>
+          <p class="note"><span class="es">Dos formas de despliegue: local en la clínica o en Render. Con manual técnico y manual de usuario.</span><span class="en">Two deployment paths: on-site at the clinic or on Render. Ships with a technical manual and a user manual.</span></p>
+        </div>
+      </div>
+      <div class="text">
+        <h3>OftAgenda</h3>
+        <p class="client"><span class="es"><b>Clínica de oftalmología láser</b> · gestión de citas con avisos automáticos a pacientes</span><span class="en"><b>Laser eye clinic</b> · appointment management with automatic patient reminders</span></p>
+        <p class="es">Agenda de consultorio para personal no técnico: se instala con un doble clic, arranca sola con Windows y avisa a los pacientes por WhatsApp. El backend se entrega como un ejecutable que no requiere instalar Node ni conocer programación.</p>
+        <p class="en">A clinic scheduler for non-technical staff: installs with a double click, starts with Windows and reminds patients over WhatsApp. The backend ships as an executable that needs neither Node nor any programming knowledge.</p>
+        <ul class="did">
+          <li class="es">Permisos granulares por bandera (crear o borrar citas, módulo de monitoreo, módulo de captura) y sesión de WhatsApp persistente.</li>
+          <li class="en">Granular flag-based permissions (create or delete appointments, monitoring module, capture module) and a persistent WhatsApp session.</li>
+          <li class="es">Empaquetado a .exe con pkg y ofuscación para producción; scripts de alta y baja del servicio de Windows.</li>
+          <li class="en">Packaged to .exe with pkg and obfuscated for production; scripts to install and remove the Windows service.</li>
+          <li class="es">Manual técnico para el área de sistemas y manual de usuario, en Markdown y HTML, con diagramas de arquitectura y procedimiento de entrega.</li>
+          <li class="en">Technical manual for IT and an end-user manual, in Markdown and HTML, with architecture diagrams and a hand-off checklist.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>React 18, TypeScript, Vite, Tailwind, shadcn/ui, Electron · Node, Express 5, TypeScript, Prisma, MySQL, JWT, whatsapp-web.js · pkg, javascript-obfuscator, node-windows · Render</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">72 commits, marzo a agosto de 2026 · manuales técnico y de usuario · configuración de Render y respaldo completo de la base</span><span class="en">72 commits, March to August 2026 · technical and user manuals · Render config and full database backup</span></dd></div>
+        </dl>
+        <div class="links"><a href="https://github.com/Rauuwww/oftalmolog-aLaser-zq" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </div>
+    </article>
+
+    <!-- 6. Winand -->
+    <article class="project" id="winand">
+      <div class="media">
+        <div class="arch" aria-label="Arquitectura de Winand">
+          <div class="row">
+            <div class="node"><b><span class="es">Monitor virtual</span><span class="en">Virtual monitor</span></b><span>driver IddCx · <span class="es">escritorio extendido</span><span class="en">extended desktop</span></span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node hot"><b>Host Windows (C++)</b><span>DXGI Desktop Duplication → H.264 Media Foundation</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b>TCP</b><span>WiFi <span class="es">o</span><span class="en">or</span> USB (adb reverse)</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b>App Android (Kotlin)</b><span>MediaCodec → SurfaceView</span></div>
+          </div>
+          <p class="note"><span class="es">El toque y el lápiz del teléfono regresan por el mismo socket y se inyectan como mouse absoluto con SendInput. Al girar el teléfono, el monitor virtual gira.</span><span class="en">Touch and pen events travel back over the same socket and are injected as absolute mouse input with SendInput. Rotate the phone and the virtual monitor rotates.</span></p>
+        </div>
+      </div>
+      <div class="text">
+        <span class="role"><span class="es">Proyecto personal · open source (MIT)</span><span class="en">Personal project · open source (MIT)</span></span>
+        <h3>Winand</h3>
+        <p class="client"><span class="es">Tu teléfono o tablet Android como <b>segundo monitor táctil</b> de Windows, por WiFi o USB</span><span class="en">Your Android phone or tablet as a <b>touch second monitor</b> for Windows, over WiFi or USB</span></p>
+        <p class="es">Alternativa abierta a Duet Display y spacedesk. Es el proyecto más cercano al sistema operativo: captura de pantalla con DXGI, codificación por hardware, un protocolo propio documentado y decodificación con MediaCodec en Android. Funciona de extremo a extremo.</p>
+        <p class="en">An open alternative to Duet Display and spacedesk. It is the project closest to the operating system: DXGI screen capture, hardware encoding, a documented custom protocol and MediaCodec decoding on Android. Works end to end.</p>
+        <ul class="did">
+          <li class="es">Escritorio extendido real, no espejo: Windows reconoce un segundo monitor de verdad.</li>
+          <li class="en">A real extended desktop, not mirroring: Windows sees a genuine second monitor.</li>
+          <li class="es">Transporte intercambiable USB (baja latencia) y WiFi sobre el mismo socket, sin reiniciar el host.</li>
+          <li class="en">Swappable USB (low latency) and WiFi transport on the same socket, without restarting the host.</li>
+          <li class="es">Protocolo host ↔ app especificado en un documento aparte; README bilingüe con guía de compilación y de instalación del driver.</li>
+          <li class="en">Host ↔ app protocol specified in its own document; bilingual README with build and driver-install guides.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>C++ (CMake, MSVC), Kotlin (Android API 26+), IddCx, DXGI, Media Foundation, MediaCodec, TCP, adb, SendInput</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">Publicado en mayo de 2026 · PROTOCOL.md, DEV_SETUP.md y guía del driver · licencia MIT</span><span class="en">Published May 2026 · PROTOCOL.md, DEV_SETUP.md and driver guide · MIT licence</span></dd></div>
+        </dl>
+        <div class="links"><a href="https://github.com/Rauuwww/winand_desktop_android" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </div>
+    </article>
+
+    <!-- 7. Gears Proto -->
+    <article class="project" id="gears">
+      <div class="media">
+        <div class="shot"><img src="assets/img/gears.webp" alt="Prototipo en Godot: personaje cápsula en tercera persona frente a coberturas, con overlay de depuración de la máquina de estados" width="1400" height="787" loading="lazy"></div>
+        <p class="caption"><span class="es">Mapa versus con bots, overlay de depuración (F3) mostrando el estado de la máquina de estados y el arma.</span><span class="en">Versus map with bots; the debug overlay (F3) shows the state machine and weapon state.</span></p>
+      </div>
+      <div class="text">
+        <span class="role"><span class="es">Proyecto personal · videojuegos</span><span class="en">Personal project · games</span></span>
+        <h3>Gears Proto</h3>
+        <p class="client"><span class="es">Prototipo de movimiento y combate estilo <b>Gears of War 4</b> en Godot 4.3</span><span class="en">Movement and combat prototype in the style of <b>Gears of War 4</b>, in Godot 4.3</span></p>
+        <p class="es">Con cápsulas y bloques, sin arte: el objetivo es que el movimiento se sienta como Gears. Cobertura, wallbounce, roadie run, evade, mantle, SWAT turn, recarga activa, ejecuciones y motosierra, con valores ajustados cuadro a cuadro contra metraje real del juego.</p>
+        <p class="en">Capsules and blocks, no art: the goal is movement that feels like Gears. Cover, wallbounce, roadie run, evade, mantle, SWAT turn, active reload, executions and chainsaw, with values tuned frame by frame against real game footage.</p>
+        <ul class="did">
+          <li class="es">Máquina de estados de 13 estados con un sensor de cobertura como única fuente de verdad por raycast.</li>
+          <li class="en">A 13-state finite state machine with a raycast cover sensor as the single source of truth.</li>
+          <li class="es">Bots que usan exactamente el mismo personaje y estados que el jugador, escribiendo el mismo snapshot de input.</li>
+          <li class="en">Bots that use exactly the same character and states as the player, writing the same input snapshot.</li>
+          <li class="es">Siete armas como recursos de datos, mapa versus con armas de poder, y escenarios de autotest que imprimen las transiciones de estado.</li>
+          <li class="en">Seven weapons as data resources, a versus map with power weapons, and autotest scenarios that print state transitions.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>Godot 4.3, GDScript, Forward+</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">43 scripts, unas 4 700 líneas, en dos días de septiembre de 2026 · 38 pruebas headless con runner propio · documento de diseño y README con las mecánicas</span><span class="en">43 scripts, about 4,700 lines, in two days of September 2026 · 38 headless tests with a custom runner · design document and README covering the mechanics</span></dd></div>
+        </dl>
+        <div class="links"><a href="https://github.com/Rauuwww/gears-proto" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </div>
+    </article>
+
+    <!-- 8. INTEC Web -->
+    <article class="project" id="intec">
+      <div class="media">
+        <div class="arch" aria-label="Arquitectura del sitio de INTEC">
+          <div class="row">
+            <div class="node"><b><span class="es">Visitante</span><span class="en">Visitor</span></b><span>intectisolutions.com.mx</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node hot"><b><span class="es">Sitio React</span><span class="en">React site</span></b><span class="es">una página; contenido por categorías con esqueleto y respaldo</span><span class="en">one page; content by category with skeleton and fallback</span></div>
+            <div class="arrow" aria-hidden="true"></div>
+            <div class="node"><b>API</b><span class="es">CMS propio en /backend</span><span class="en">own CMS at /backend</span></div>
+          </div>
+          <div class="side">
+            <div class="node"><b><span class="es">Panel oculto</span><span class="en">Hidden panel</span></b><span class="es">CRUD con JWT, doble clic en el pie</span><span class="en">CRUD with JWT, double-click the footer</span></div>
+            <div class="node"><b><span class="es">Contacto</span><span class="en">Contact</span></b><span>Node + Express → Resend</span></div>
+          </div>
+          <p class="note"><span class="es">Galería, promociones, casos de éxito, capacitación y servicios de IA se editan sin tocar el código.</span><span class="en">Gallery, promotions, case studies, training and AI services are edited without touching code.</span></p>
+        </div>
+      </div>
+      <div class="text">
+        <h3>INTEC TI Solutions · <span class="es">sitio corporativo</span><span class="en">company website</span></h3>
+        <p class="client"><span class="es"><b>INTEC TI Solutions</b> · sitio de una página con CMS propio, en producción desde 2024</span><span class="en"><b>INTEC TI Solutions</b> · one-page site with its own CMS, in production since 2024</span></p>
+        <p class="es">Soluciones, casos de éxito, promociones, galería y capacitación se cargan desde un backend propio, y se editan desde un panel de administración escondido en la misma página. Si la API falla, la página no se rompe: muestra un esqueleto y luego contenido de respaldo.</p>
+        <p class="en">Solutions, case studies, promotions, gallery and training load from a custom backend and are edited from an admin panel hidden inside the same page. If the API fails the page does not break: it shows a skeleton and then fallback content.</p>
+        <ul class="did">
+          <li class="es">Panel CRUD embebido con login JWT, desbloqueado con un doble clic en el pie de página.</li>
+          <li class="en">Embedded CRUD panel with JWT login, unlocked by double-clicking the footer.</li>
+          <li class="es">Formulario de contacto con backend Node y envío transaccional por Resend, con validación y escape de HTML.</li>
+          <li class="en">Contact form with a Node backend and transactional email via Resend, with validation and HTML escaping.</li>
+        </ul>
+        <dl class="sheet">
+          <div><dt>Stack</dt><dd>React 18, Vite, Tailwind, Flowbite, framer-motion · Node, Express, Resend</dd></div>
+          <div><dt class="es">Evidencia</dt><dt class="en">Evidence</dt><dd><span class="es">43 commits, diciembre de 2024 a agosto de 2026, con un segundo colaborador · documentación del API</span><span class="en">43 commits, December 2024 to August 2026, with a second contributor · API documentation</span></dd></div>
+        </dl>
+        <div class="links">
+          <a href="https://intectisolutions.com.mx" target="_blank" rel="noopener"><span class="es">Sitio en vivo</span><span class="en">Live site</span></a>
+          <a href="https://github.com/Rauuwww/INTEC_WEB" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="otros">
+  <div class="wrap">
+    <h2 class="sec"><span class="es">Otros proyectos</span><span class="en">Other projects</span></h2>
+    <p class="sub"><span class="es">Trabajos más acotados o en fase temprana.</span><span class="en">Smaller or early-stage work.</span></p>
+    <div class="others">
+      <article>
+        <h3>JASE WMS</h3>
+        <p><span class="es">Maqueta funcional de un sistema de almacén e importación para Grupo Comercial JASE: 15 pantallas (pedimentos, kardex, recepciones, traspasos, conversión, producción) con datos simulados y un tour guiado interactivo propio. React 19, Tailwind 4.</span><span class="en">Working mock-up of a warehouse and import system for Grupo Comercial JASE: 15 screens (customs entries, kardex, receipts, transfers, conversion, production) on mock data with a custom interactive guided tour. React 19, Tailwind 4.</span></p>
+        <div class="links"><a href="https://github.com/Rauuwww/ProyectoJASE" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </article>
+      <article>
+        <h3><span class="es">Asistencia por QR</span><span class="en">QR Attendance</span></h3>
+        <p><span class="es">Control de asistencia a eventos: genera códigos QR personalizados en lote (ZIP con SVG y PNG), los valida con la cámara y administra eventos y asistentes con importación CSV. React 19, Express 5, MySQL.</span><span class="en">Event attendance: generates custom QR codes in bulk (ZIP with SVG and PNG), validates them with the camera and manages events and attendees with CSV import. React 19, Express 5, MySQL.</span></p>
+        <div class="links"><a href="https://github.com/Rauuwww/QR_Asistencias" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </article>
+      <article>
+        <h3><span class="es">Reportes heredados (C#)</span><span class="en">Legacy reports (C#)</span></h3>
+        <p><span class="es">El sistema de escritorio anterior de reportes financieros sobre Microsip: WinForms, 30 reportes RDLC con DataSets tipados y envío SMTP. Lo mantuve y después lo reemplacé con Reportes Automáticos.</span><span class="en">The previous desktop system for financial reports over Microsip: WinForms, 30 RDLC reports with typed DataSets and SMTP delivery. I maintained it and later replaced it with Automated Reports.</span></p>
+        <div class="links"><a href="https://github.com/Rauuwww/ReportesAutomaticosLegado" target="_blank" rel="noopener"><span class="es">Repositorio</span><span class="en">Repository</span></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <h2 class="sec">Stack</h2>
+    <p class="sub"><span class="es">Solo lo que aparece en los repositorios de arriba.</span><span class="en">Only what appears in the repositories above.</span></p>
+    <div class="stack">
+      <div>
+        <h3>Frontend</h3>
+        <ul><li><b>React</b> 18 y 19, Vite, React Router</li><li><b>TypeScript</b></li><li><b>Tailwind CSS</b> 3 y 4, shadcn/ui, Flowbite</li><li>Leaflet, framer-motion, jsPDF</li></ul>
+      </div>
+      <div>
+        <h3>Backend</h3>
+        <ul><li><b>Node.js</b>, Express 5</li><li><b>Prisma</b>, Sequelize</li><li><b>Laravel</b> (PHP)</li><li>JWT, RBAC, Swagger, socket.io, node-cron, worker threads</li><li>Python (<span class="es">servicios de IA</span><span class="en">AI services</span>)</li></ul>
+      </div>
+      <div>
+        <h3><span class="es">Bases de datos</span><span class="en">Databases</span></h3>
+        <ul><li><b>MySQL</b> 8</li><li><b>Firebird</b> (ERP Microsip)</li><li>SQLite</li></ul>
+      </div>
+      <div>
+        <h3><span class="es">Móvil y escritorio</span><span class="en">Mobile and desktop</span></h3>
+        <ul><li><b>Capacitor</b> (Android/iOS), Firebase Cloud Messaging</li><li><b>Electron</b>, electron-builder (NSIS)</li><li>Kotlin (Android), C++ (Windows)</li><li>C# WinForms (<span class="es">heredado</span><span class="en">legacy</span>)</li></ul>
+      </div>
+      <div>
+        <h3><span class="es">Infraestructura</span><span class="en">Infrastructure</span></h3>
+        <ul><li><span class="es">Servidores Windows del cliente</span><span class="en">Client Windows servers</span>: <b>servicios de Windows</b>, Caddy, No-IP</li><li>Docker, Railway, Render, GitHub Pages</li><li>NVIDIA Jetson</li></ul>
+      </div>
+      <div>
+        <h3><span class="es">Integraciones</span><span class="en">Integrations</span></h3>
+        <ul><li><b>WhatsApp</b> (Baileys, whatsapp-web.js), Telegram</li><li>ERP Microsip, IntecPos</li><li>Resend, Nodemailer, Cloudinary</li><li>Anthropic SDK, Ollama, YOLO</li></ul>
+      </div>
+      <div>
+        <h3><span class="es">Calidad</span><span class="en">Quality</span></h3>
+        <ul><li>Jest + Supertest, pytest, PHPUnit, Vitest</li><li>Puppeteer (<span class="es">capturas y verificación visual</span><span class="en">screenshots and visual checks</span>)</li><li><span class="es">Manuales técnicos y de usuario, guías de despliegue</span><span class="en">Technical and user manuals, deployment guides</span></li></ul>
+      </div>
+      <div>
+        <h3><span class="es">Juegos</span><span class="en">Games</span></h3>
+        <ul><li>Godot 4, GDScript</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <p class="big">
+      <span class="es">Si buscas a alguien que tome un requerimiento y lo convierta en un sistema instalado y funcionando, escríbeme.</span>
+      <span class="en">If you need someone who takes a requirement and turns it into a system installed and running, get in touch.</span>
+    </p>
+    <dl>
+      <div><dt><span class="es">Correo</span><span class="en">Email</span></dt><dd><a href="mailto:raurudesulml@gmail.com">raurudesulml@gmail.com</a></dd></div>
+      <div><dt>GitHub</dt><dd><a href="https://github.com/Rauuwww" target="_blank" rel="noopener">github.com/Rauuwww</a></dd></div>
+      <div><dt><span class="es">Ubicación</span><span class="en">Location</span></dt><dd><span class="es">San Martín Texmelucan, Puebla, México · disponible para trabajo remoto</span><span class="en">San Martín Texmelucan, Puebla, Mexico · open to remote work</span></dd></div>
+      <div><dt><span class="es">Idiomas</span><span class="en">Languages</span></dt><dd><span class="es">Español nativo · inglés técnico</span><span class="en">Native Spanish · technical English</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Raúl R. Yllescas</span>
+    <span><span class="es">Hecho a mano en HTML y CSS, sin frameworks.</span><span class="en">Hand-written HTML and CSS, no frameworks.</span></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){
+    root.setAttribute('data-lang',l);root.setAttribute('lang',l);
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-set-lang')===l));});
+    document.title=l==='en'?'Raúl R. Yllescas · Portfolio':'Raúl R. Yllescas · Portafolio';
+    try{localStorage.setItem('lang',l);}catch(e){}
+  }
+  var saved=null;try{saved=localStorage.getItem('lang');}catch(e){}
+  var q=new URLSearchParams(location.search).get('lang');
+  setLang(q==='en'||q==='es'?q:(saved==='en'||saved==='es'?saved:'es'));
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-set-lang'));});});
+})();
+</script>
 </body>
 </html>
